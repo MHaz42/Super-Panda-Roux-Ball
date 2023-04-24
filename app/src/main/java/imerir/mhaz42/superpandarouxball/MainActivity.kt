@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onSensorChanged(p0: SensorEvent?) {
         if (p0 != null) {
-            canvas.drawColor("#110f12".toColorInt())
+            canvas.drawColor("#ff121212".toColorInt())
             if (x - p0.values[0] * 1 > 0 && x - p0.values[0] * 1 < dw)
                 x -= p0.values[0] * 1
             if (y + p0.values[1] * 1 > 0 && y + p0.values[1] * 1 < dh)
