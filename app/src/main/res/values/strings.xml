@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Super Panda Roux Ball</string>
+    <string name="fail">Fail</string>
+    <string name="success">Success</string>
 </resources>
