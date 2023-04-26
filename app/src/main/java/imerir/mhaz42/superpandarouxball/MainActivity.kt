@@ -36,6 +36,12 @@ import com.google.android.gms.location.Priority
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import java.io.IOException
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var address: List<Address>
@@ -53,7 +59,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var dh = 0
     private var x: Float = 275F
     private var y: Float = 375F
-    //private val client = OkHttpClient()
+    private val client = OkHttpClient()
 
     @Serializable
     private val map: Map = Map()
@@ -230,19 +236,19 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
         }
     }
-    /**
+
     private fun run(url: String) {
-    val request = Request.Builder().url(url).build()
+        val request = Request.Builder().url(url).build()
 
-    client.newCall(request).enqueue(object : Callback {
-    override fun onFailure(call: Call, e: IOException) {
-    Log.v("API Call", e.message ?: "")
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.v("API Call", e.message ?: "")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                Log.v("API Call", response.body()?.string() ?: "")
+            }
+        })
     }
 
-    override fun onResponse(call: Call, response: Response) {
-    Log.v("API Call", response.body()?.string() ?: "")
-    }
-    })
-    }
-     **/
 }
